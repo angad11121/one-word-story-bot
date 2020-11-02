@@ -18,4 +18,4 @@ for filename in os.listdir('./cogs'):
         client.load_extension(f'cogs.{filename[:-3]}')
 
 
-client.run('NzMxNjY2MDE4NjA2NTE0Mjc2.XwpXFA.RHMKSQ4I4d7iX66DC4lJmJnpKjA')
+client.run('NzMxNjY2MDE4NjA2NTE0Mjc2.XwpXFA.lO3G6V1y3aKUroDR4sBXOsg5MTI')
