@@ -54,8 +54,6 @@ class Example(commands.Cog):
     @commands.command(aliases = ['c'])
     async def clear(self, ctx):
         self.story = ""
-        self.channelid = ""
-        self.running = False
 
     @commands.command(aliases = ['h'])
     async def helpplis(self, ctx):
