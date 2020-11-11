@@ -24,7 +24,8 @@ class Example(commands.Cog):
         
         if ctx.valid == False:
             if self.channelid == message.channel:
-                self.story += message.content + " "
+                if self.running == True:
+                    self.story += message.content + " "
         
     @commands.command(aliases = ['p'])
     async def play(self, ctx):
@@ -44,8 +45,11 @@ class Example(commands.Cog):
     @commands.command(aliases = ['s'])
     async def stop(self,ctx):
         self.running = False
-        if ctx.message.channel == self.channelid:
-            await ctx.send(self.story)
+        try:
+            if ctx.message.channel == self.channelid:
+                await ctx.send(self.story)
+        except:
+            pass
         self.channelid = ""
         self.story = ""
         return
