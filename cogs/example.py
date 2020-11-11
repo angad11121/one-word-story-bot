@@ -64,8 +64,9 @@ class Example(commands.Cog):
 
     @commands.command()
     async def pause(self, ctx):
-        self.running = False
-        ctx.send("Paused")
+        if ctx.message.channel == self.channelid:
+            self.running = False
+            ctx.send("Paused")
 
     @commands.command()
     async def unpause(self, ctx):
