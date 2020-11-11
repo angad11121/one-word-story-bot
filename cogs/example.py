@@ -44,9 +44,9 @@ class Example(commands.Cog):
     @commands.command(aliases = ['s'])
     async def stop(self,ctx):
         self.running = False
-        self.channelid = ""
         if ctx.message.channel == self.channelid:
             await ctx.send(self.story)
+        self.channelid = ""
         self.story = ""
         return
 
