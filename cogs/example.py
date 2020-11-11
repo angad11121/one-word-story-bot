@@ -29,6 +29,10 @@ class Example(commands.Cog):
         
     @commands.command(aliases = ['p'])
     async def play(self, ctx):
+        if ctx.message.channel == self.channelid:
+            if self.story != "":
+                await ctx.send("Continuing with:" + self.story)
+                return
         if self.running:
             await ctx.send("Already Running")
             return
@@ -61,10 +65,13 @@ class Example(commands.Cog):
     @commands.command()
     async def pause(self, ctx):
         self.running = False
+        ctx.send("Paused")
 
     @commands.command()
     async def unpause(self, ctx):
-        self.running = True
+        if ctx.message.channel == self.channelid:
+            self.running = True
+            ctx.send("Un-Paused")
 
     @commands.command(aliases = ['h'])
     async def helpplis(self, ctx):
