@@ -32,7 +32,6 @@ class Example(commands.Cog):
             await ctx.send("Already Running")
             return
         self.running = True
-        self.story = ""
         self.channelid = ctx.message.channel
         await ctx.send("Ready!")
 
@@ -44,16 +43,24 @@ class Example(commands.Cog):
 
     @commands.command(aliases = ['s'])
     async def stop(self,ctx):
+        self.running = False
+        self.channelid = ""
         if ctx.message.channel == self.channelid:
             await ctx.send(self.story)
         self.story = ""
-        self.channelid = ""
-        self.running = False
         return
 
     @commands.command(aliases = ['c'])
     async def clear(self, ctx):
         self.story = ""
+
+    @commands.command()
+    async def pause(self, ctx):
+        self.running = False
+
+    @commands.command()
+    async def unpause(self, ctx):
+        self.running = True
 
     @commands.command(aliases = ['h'])
     async def helpplis(self, ctx):
