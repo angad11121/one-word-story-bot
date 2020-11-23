@@ -1,6 +1,8 @@
 import os
 import discord
 from discord.ext import commands
+from dotenv import load_dotenv
+load_dotenv()
 
 client = commands.Bot(command_prefix = '&')
 
@@ -18,4 +20,4 @@ for filename in os.listdir('./cogs'):
         client.load_extension(f'cogs.{filename[:-3]}')
 
 
-client.run('NzMxNjY2MDE4NjA2NTE0Mjc2.XwpXFA.lO3G6V1y3aKUroDR4sBXOsg5MTI')
+client.run(os.getenv("api-token"))
